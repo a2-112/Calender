@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&family=Aboreto&family=Gotu&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Gotu", sans-serif;
+    min-height: 100vh;
+background-color: hsl(49, 22%, 85%);
+    font-size: 0.75rem;
+    min-width: 100%;
+    overflow-x: hidden;
+    display: grid;
+    align-items: center;
+}
+
+.calender-container {
+    background-color: hsl(295, 14%, 16%);
+    color: hsl(49, 22%, 85%);
+    padding: 1em;
+    width: 100%;
+
+}
+
+.calender-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    text-transform: uppercase;
+}
+
+.month-selector {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-inline: 0.5em;
+}
+
+i {
+    color: hsl(49, 22%, 85%);
+    background-color: none;
+    cursor: pointer;
+    margin-inline: 0.3em;
+}
+
+.days ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1em;
+    text-transform: uppercase;
+}
+
+li {
+    list-style-type: none;
+    padding: 1em;
+}
+
+.dates ul {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inactive {
+    color: hsl(308, 5%, 31%);
+}
+
+#active {
+    background-color: hsl(285, 3%, 27%);
+    border-radius: 15px;
+    padding: 0.8em;
+    text-align: center;
+}
+
+aside {
+    padding: 1em;
+    color: hsl(285, 3%, 27%);
+ 
+}
+
+:where(.todo-header, .clear-list) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5em;
+}
+
+:where(#add-task, .clear-list-btn) {
+    border: none;
+    background-color: transparent;
+    font-size: 1.5rem;
+    color: hsl(285, 3%, 27%);
+}
+
+:where(span, p) {
+    color: hsl(295, 14%, 16%);
+}
+
+.todo-list {
+    padding-top: 0.75em;
+}
+
+.checkbox {
+    display: flex;
+    margin: 0.95em;
+    gap: 15px;
+}
+
+input[type="checkbox"] {
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    border: 2px solid hsl(295, 14%, 16%);
+    appearance: none;
+    background-color: hsl(295, 14%, 16%);
+    transition: outline 0.1s;
+    border-radius: 10px;
+}
+
+input[type="checkbox"]:checked {
+    padding: 2px;
+}
+
+input[type="checkbox"]:not(:disabled):checked::after {
+    content: '\2713';
+    position: relative;
+    top: -3px;
+    left: 1px;
+    color: hsl(49, 22%, 85%);
+}
+
+@media screen and (min-width:45.813rem) {
+    main{
+        display: flex;
+        flex-direction: row-reverse;
+        font-size: 1.1rem;
+        min-height: 100vh;
+        min-width: 80%;
+        
+    }
+.calender-container {
+    width: 70%;
+    padding-top: 0;
+    padding-inline:2em ;
+    margin-top: 0;
+}
+aside{
+    width: 30%;
+        margin-top: 0;
+}
+input[type="checkbox"]:not(:disabled):checked::after {
+    top: -3.5px;
+    font-size: 1.5em;
+}
+.dates{
+    font-size: 1.2rem;
+}
+}
