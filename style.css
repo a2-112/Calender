@@ -149,7 +149,7 @@ input[type="checkbox"]:checked {
 input[type="checkbox"]:not(:disabled):checked::after {
     content: '\2713';
     position: relative;
-    top: -4px;
+    top: -5px;
     left: 1px;
     color: hsl(49, 22%, 85%);
     font-size: 0.8em;
