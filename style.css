@@ -152,7 +152,7 @@ input[type="checkbox"]:not(:disabled):checked::after {
     top: -3px;
     left: 1px;
     color: hsl(49, 22%, 85%);
-    font-size: 1em;
+    font-size: 0.8em;
 }
 
 @media screen and (min-width:45.813rem) {
