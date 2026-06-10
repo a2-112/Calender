@@ -143,15 +143,16 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-    padding: 1px;
+    padding: 2px;
 }
 
 input[type="checkbox"]:not(:disabled):checked::after {
     content: '\2713';
     position: relative;
-    top: -2.5px;
+    top: -3px;
     left: 1px;
     color: hsl(49, 22%, 85%);
+    font-size: 1em;
 }
 
 @media screen and (min-width:45.813rem) {
