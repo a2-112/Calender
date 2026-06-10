@@ -85,3 +85,20 @@ nextBtn.addEventListener("click", () => {
 // Initial render
 renderCalendar();
 
+
+const addBtn = document.getElementById("add-task")
+const toDoList = document.querySelector(".todo-list")
+
+function addTasks(){
+  const headingInput = document.createElement("input")
+  const heading = document.createElement("h3")
+  const headingBtn = document.createElement("button")
+
+  heading.textContent = headingInput.value
+  toDoList.append(headingInput,heading)
+}
+ const taskToDo= document.createElement("input[type='checkbox']")
+  const taskToDo= document.createElement("label")
+
+addBtn.addEventListener("click",addTasks)
+
