@@ -66,7 +66,9 @@ function renderCalendar() {
   document.querySelectorAll(".day").forEach((dayEl) => {
     dayEl.addEventListener("click", () => {
       const day = dayEl.dataset.day;
-      alert(`You clicked ${day} ${currentDate.toLocaleString("default", { month: "long" })} ${year}`);
+      alert(
+        `You clicked ${day} ${currentDate.toLocaleString("default", { month: "long" })} ${year}`,
+      );
     });
   });
 }
@@ -85,20 +87,92 @@ nextBtn.addEventListener("click", () => {
 // Initial render
 renderCalendar();
 
+const addBtn = document.getElementById("add-task");
+const toDoList = document.querySelector(".todo-list");
+const clearList = document.querySelector(".clear-list-btn");
+const clearListCon = document.querySelector(".clear-list");
 
-const addBtn = document.getElementById("add-task")
-const toDoList = document.querySelector(".todo-list")
+// make sure each heading input has a content before creating more
+let editingHeader = false;
 
-function addTasks(){
-  const headingInput = document.createElement("input")
-  const heading = document.createElement("h3")
-  const headingBtn = document.createElement("button")
+//creating and adding content function
+function addTasks() {
+  //make sure each task input has a content before creating more
+  let taskBeingEdited = false;
 
-  heading.textContent = headingInput.value
-  toDoList.append(headingInput,heading)
+  //content present create more else stop
+  if (editingHeader) return;
+  editingHeader = true;
+
+  // div container for content creation
+  const title = document.createElement("div");
+  title.classList.add("title");
+  const taskContainer = document.createElement("div");
+  taskContainer.classList.add("checkbox");
+
+  // heading content creation
+  const heading = document.createElement("h3");
+  const headingInput = document.createElement("input");
+  //remove title div
+  const minusHeading = document.createElement("button");
+  minusHeading.classList.add("minus", "remove");
+  minusHeading.addEventListener("click", () => {
+    title.remove();
+  });
+  // get heading text and control
+  headingInput.addEventListener("change", () => {
+    let value = headingInput.value;
+    heading.textContent = `# ${value}`;
+    headingInput.style.display = "none";
+    headingBtn.textContent = "+";
+    minusHeading.textContent = "-";
+    title.appendChild(headingBtn);
+  });
+  // add them to their container
+  title.append(headingInput, heading, minusHeading);
+
+  //at click create sub task
+  const headingBtn = document.createElement("button");
+  headingBtn.addEventListener("click", () => {
+    // if task input have content create more
+    if (taskBeingEdited) return;
+    taskBeingEdited = true;
+
+    //task element creation
+    const eachTask = document.createElement("div");
+    eachTask.classList.add("each-task");
+    const taskLabel = document.createElement("label");
+    const checkedTask = document.createElement("input");
+    checkedTask.setAttribute("type", "checkbox");
+    const todoTask = document.createElement("input");
+
+    //task text content creation
+    todoTask.addEventListener("change", () => {
+      let task = todoTask.value;
+      taskLabel.textContent = task;
+      todoTask.style.display = "none";
+    });
+    // removing task button and function
+    const minusTask = document.createElement("button");
+    minusTask.classList.add("minus");
+    checkedTask.addEventListener("click", () => {
+      minusTask.textContent = "-";
+    });
+    minusTask.addEventListener("click", () => {
+      eachTask.remove();
+    });
+
+    //creating individual container for each task
+    eachTask.append(checkedTask, taskLabel, todoTask, minusTask);
+    // add to main container
+    taskContainer.append(eachTask);
+  });
+  //add to major container
+  toDoList.append(title, taskContainer);
 }
- const taskToDo= document.createElement("input[type='checkbox']")
-  const taskToDo= document.createElement("label")
-
-addBtn.addEventListener("click",addTasks)
-
+//runs function at each click
+addBtn.addEventListener("click", addTasks);
+//clears function
+clearList.addEventListener("click", () => {
+  toDoList.innerHTML = "";
+});
