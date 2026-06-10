@@ -143,7 +143,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-    padding: 2px;
+    padding: 1.5px;
 }
 
 input[type="checkbox"]:not(:disabled):checked::after {
