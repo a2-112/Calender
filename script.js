@@ -122,6 +122,10 @@ function addTasks() {
   // get heading text and control
   headingInput.addEventListener("change", () => {
     let value = headingInput.value;
+
+    if (!value.trim()) return;
+editingHeader = false;
+
     heading.textContent = `# ${value}`;
     headingInput.style.display = "none";
     headingBtn.textContent = "+";
@@ -149,6 +153,8 @@ function addTasks() {
     //task text content creation
     todoTask.addEventListener("change", () => {
       let task = todoTask.value;
+      if (!task.trim()) return;
+       taskBeingEdited = false;
       taskLabel.textContent = task;
       todoTask.style.display = "none";
     });
